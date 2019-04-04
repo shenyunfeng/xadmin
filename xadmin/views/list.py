@@ -216,7 +216,7 @@ class ListAdminView(ModelAdminView):
         # select_related defined.
         if not queryset.query.select_related:
             if self.list_select_related:
-                queryset = queryset.select_related()
+                queryset = queryset.select_related(*self.list_select_related)
             elif self.list_select_related is None:
                 related_fields = []
                 for field_name in self.list_display:
